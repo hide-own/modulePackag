@@ -5,3 +5,11 @@
 pre {
   @apply py-8
 }
+
+.text-decoration {
+  text-decoration: line-through
+}
+
+.scrollbar::-webkit-scrollbar {
+  display: none
+}

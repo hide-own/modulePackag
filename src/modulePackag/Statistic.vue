@@ -46,6 +46,4 @@ watch(
     }, time)
   }
 )
-
-
 </script>

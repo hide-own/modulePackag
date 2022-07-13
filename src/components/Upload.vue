@@ -1,9 +1,9 @@
 <template>
-<!--    <KUpload :radio="false" v-model:file-list="fileList"/>-->
+    <KUpload :radio="false" v-model:file-list="fileList"/>
 </template>
 
 <script lang="ts" setup>
-// import {KUpload} from '@/modulePackag'
+import {KUpload} from '@/modulePackag'
 
 import {ref} from "vue";
 

@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap">
     <div class="w-full md:w-1/4 px-3 border-r-2 border-gray-200">
-      <Input @change="search" class="mb-3" placeholder="请输入分类名"/>
+      <KInput @change="search" class="mb-3" placeholder="请输入分类名"/>
       <div class="overflow-auto h-[50vh] scrollbar">
         <!--    全部图片    -->
         <Tree :data='{"id": 0, "pid": 0, "name": "全部图片", "enname": "", "title": "全部图片", "children": []}' menu>

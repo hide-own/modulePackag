@@ -61,7 +61,7 @@ type Data = {
 const emit = defineEmits(['change'])
 const props = withDefaults(defineProps<{
   data: Data
-  size: 'xl' | 'md' | 'xs'
+  size?: 'xl' | 'md' | 'xs'
   valueKey?: unknown
   menu?: boolean
 }>(), {

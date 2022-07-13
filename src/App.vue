@@ -28,8 +28,9 @@ import Modal from '@/components/Modal.vue'
 import KImage from '@/components/KImage.vue'
 import Trees from '@/components/Tree.vue'
 import Pagination from '@/components/Pagination.vue'
-// import KUpload from '@/components/Upload.vue'
-
+import Tab from '@/components/Tab.vue'
+import Statistic from '@/components/Statistic.vue'
+import KUpload from '@/components/Upload.vue'
 
 
 const dem = reactive<any[]>([
@@ -39,9 +40,9 @@ const dem = reactive<any[]>([
     com: markRaw(Button)
   },
   {
-    id:22,
-    name:'表单',
-    children:[
+    id: 22,
+    name: '表单',
+    children: [
       {
         id: 2,
         name: '选择器',
@@ -89,10 +90,10 @@ const dem = reactive<any[]>([
     name: "图片",
     com: markRaw(KImage)
   },
-  // {
-  //   name:"图片上传",
-  //   com:markRaw(KUpload),
-  // },
+  {
+    name:"图片上传",
+    com:markRaw(KUpload),
+  },
   {
     id: 11,
     name: "树",
@@ -102,12 +103,24 @@ const dem = reactive<any[]>([
     id: 12,
     name: '分页',
     com: markRaw(Pagination)
+  },
+  {
+    id:13,
+    name: '标签页',
+    com: markRaw(Tab)
+  },
+  {
+    id:14,
+    name: '数值显示',
+    com: markRaw(Statistic)
   }
 ])
 let component = ref<any>(dem[0].com)
 
 function change(com: any) {
-  component.value = com.value
+  if (com.value) {
+    component.value = com.value
+  }
 }
 
 </script>

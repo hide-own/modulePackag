@@ -1,8 +1,7 @@
 <template>
   <li @click.stop="choose">
-    <div
-        ref="itemRef"
-        :class="['z-50 cursor-pointer',selected ? 'bg-amber-100 text-amber-900' : 'text-gray-900','relative cursor-default select-none py-2 pl-10 pr-4']">
+    <div ref="itemRef"
+         :class="['z-50 cursor-pointer',selected ? 'bg-amber-100 text-amber-900' : 'text-gray-900','relative cursor-default select-none py-2 pl-10 pr-4']">
       <slot name="title" :selected="selected">
         <span :class="[selected ? 'font-medium' : 'font-normal','block truncate']">{{ label }}</span>
       </slot>
@@ -19,7 +18,7 @@
 <script lang="ts" setup>
 import {CheckIcon} from '@heroicons/vue/solid'
 import {Value} from "./types";
-import {computed, inject, ref, Ref, watch, watchEffect} from "vue";
+import {computed, inject, ref, Ref, watch} from "vue";
 
 const props = defineProps<{
   value: Value
@@ -27,7 +26,7 @@ const props = defineProps<{
 }>()
 
 const selectCtx = inject<Ref<Value[]>>('selected')
-const label = inject<Ref<Value>>('label')
+const labels = inject<Ref<Value>>('label')
 const itemRef = ref<HTMLElement | null>(null);
 
 
@@ -37,21 +36,22 @@ const selected = computed<boolean | undefined>(() => {
 })
 
 //选中的label
-function labelChange(judge:boolean|undefined){
-  if(judge){
-    (label as unknown as Ref).value = (props.label ? props.label : itemRef.value?.textContent) as Value;
+function labelChange(judge: boolean | undefined) {
+  if (judge) {
+    (labels as unknown as Ref).value = (props.label ? props.label : itemRef.value?.textContent) as Value;
   }
 }
+
 labelChange(selected.value)
 
-watch(() => selectCtx?.value as unknown as Value[], (oldValue:Value[], newValue:Value[]) => {
+watch(() => selectCtx?.value as unknown as Value[], (oldValue: Value[], newValue: Value[]) => {
   labelChange(oldValue.includes(props.value))
   labelChange(newValue.includes(props.value))
 })
 
 
 function choose() {
-  (label as unknown as Ref).value = (props.label ? props.label : itemRef.value?.textContent) as Value;
+  (labels as unknown as Ref).value = (props.label ? props.label : itemRef.value?.textContent) as Value;
   (selectCtx as Ref).value = props.value
 }
 </script>
