@@ -31,6 +31,7 @@ import Pagination from '@/components/Pagination.vue'
 import Tab from '@/components/Tab.vue'
 import Statistic from '@/components/Statistic.vue'
 import KUpload from '@/components/Upload.vue'
+import tag from '@/components/tag.vue'
 
 
 const dem = reactive<any[]>([
@@ -113,6 +114,11 @@ const dem = reactive<any[]>([
     id:14,
     name: '数值显示',
     com: markRaw(Statistic)
+  },
+  {
+    id:15,
+    name:"标签",
+    com: markRaw(tag)
   }
 ])
 let component = ref<any>(dem[0].com)

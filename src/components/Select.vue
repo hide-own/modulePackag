@@ -1,5 +1,5 @@
 <template>
-  多选：
+  多选：{{valueSelect}}
   <KSelect v-model:value="valueSelect" placeholder="占位符" multiple>
     <KOption v-for="val in type_header" :key="val.type" :value="val.value" :label="val.name">
 <!--      <template #title="{selected}">-->
