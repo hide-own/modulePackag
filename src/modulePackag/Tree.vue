@@ -2,13 +2,13 @@
   <div class="w-full">
     <div class="w-full rounded text-gray-300 text-gray-600">
       <div
-        @click='an(data[valueKey])'
+        @click='change(data[valueKey])'
         @mouseleave="showMenu = false"
         :class="['py-2 hover:bg-gray-100 flex w-full text-left text-sm font-medium',size]">
         <div :class="[iconWidth]">
           <slot name="icon" :open="open">
             <ChevronRightIcon
-              v-if="data?.children?.length>0"
+              v-if="data.children?.length>0"
               :class="open ? 'rotate-90 transform' : ''"
               class="h-full  text-gray-500"/>
           </slot>
@@ -25,9 +25,9 @@
         </div>
       </div>
 
-      <div v-if="data?.children?.length>0 && open">
+      <div v-if="data.children?.length>0 && open">
         <Tree @change="$emit('change',$event)"
-              v-for="val in data?.children"
+              v-for="val in data.children"
               :key="val.id"
               :menu="menu"
               :value-key="valueKey"
@@ -60,9 +60,9 @@ type Data = {
 
 const emit = defineEmits(['change'])
 const props = withDefaults(defineProps<{
-  data: Data
+  data: any
   size?: 'xl' | 'md' | 'xs'
-  valueKey?: unknown
+  valueKey?: string
   menu?: boolean
 }>(), {
   size: "md"
@@ -71,7 +71,7 @@ const props = withDefaults(defineProps<{
 const open = ref<boolean>(false)
 let showMenu = ref<boolean>(false)
 
-const size = computed(() => {
+const size = computed<string>(() => {
   switch (props.size) {
     case "xs":
       return 'text-xs'
@@ -82,7 +82,7 @@ const size = computed(() => {
   }
 })
 
-const iconWidth = computed(() => {
+const iconWidth = computed<string>(() => {
   switch (props.size) {
     case "xs":
       return 'w-4'
@@ -94,7 +94,7 @@ const iconWidth = computed(() => {
 })
 
 
-function an(value: unknown) {
+function change(value: any) {
   open.value = !open.value
   emit('change', {value, open: open.value})
 }

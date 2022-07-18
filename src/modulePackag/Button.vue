@@ -9,17 +9,16 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, toRef} from "vue";
+import {computed, PropType, toRef} from "vue";
 
-const props = withDefaults(defineProps<{
-  type?: "normal" | "success" | "warning" | "info";
-  disabled?: boolean
-}>(), {
+const props = withDefaults(defineProps < {
+  type? :"normal" | "success" | "warning" | "info"
+  disabled ? : boolean
+} > (), {
   type: 'normal',
   disabled: false
 });
-const disabled = toRef(props, 'disabled')
-
+console.log(props.type)
 const type = computed<string>(() => {
   switch (props.type) {
     case 'success':

@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import {CheckIcon} from '@heroicons/vue/solid'
-import {Value} from "./types";
+import {Value, SelectedLabel} from "./types";
 import {computed, inject, ref, Ref, watch} from "vue";
 
 const props = defineProps<{
@@ -25,33 +25,32 @@ const props = defineProps<{
   label?: Value
 }>()
 
-const selectCtx = inject<Ref<Value[]>>('selected')
-const labels = inject<Ref<Value>>('label')
+const selectCtx = inject<Ref<SelectedLabel[]>>('selected')
+const selectCtxFind = selectCtx?.value.find(d=>d.value === props.value)
 const itemRef = ref<HTMLElement | null>(null);
 
+const label = computed(() => {
+  return props.label ? props.label : itemRef.value?.textContent
+})
 
 //选中的value
 const selected = computed<boolean | undefined>(() => {
-  return selectCtx?.value.includes(props.value)
-})
-
-//选中的label
-function labelChange(judge: boolean | undefined) {
-  if (judge) {
-    (labels as unknown as Ref).value = (props.label ? props.label : itemRef.value?.textContent) as Value;
+  // let find = selectCtx!.value.find(d => {
+  //   let existence: boolean = d.value === props.value
+  //   if (existence) {
+  //     d.label = label.value
+  //   }
+  //   return existence
+  // })
+  if(selectCtxFind){
+    selectCtxFind.label = label.value
   }
-}
-
-labelChange(selected.value)
-
-watch(() => selectCtx?.value as unknown as Value[], (oldValue: Value[], newValue: Value[]) => {
-  labelChange(oldValue.includes(props.value))
-  labelChange(newValue.includes(props.value))
+  console.log(selectCtxFind)
+  return selectCtxFind !== undefined
 })
 
 
 function choose() {
-  (labels as unknown as Ref).value = (props.label ? props.label : itemRef.value?.textContent) as Value;
-  (selectCtx as Ref).value = props.value
+  selectCtx!.value = [{value: props.value, label: props.label}]
 }
 </script>

@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import {markRaw, reactive, ref} from "vue";
+import {inject, InjectionKey, markRaw, provide, reactive, ref} from "vue";
 import {Tree} from '@/modulePackag'
 import Button from '@/components/Button.vue'
 import Select from '@/components/Select.vue'
@@ -32,6 +32,7 @@ import Tab from '@/components/Tab.vue'
 import Statistic from '@/components/Statistic.vue'
 import KUpload from '@/components/Upload.vue'
 import tag from '@/components/tag.vue'
+import internal from "stream";
 
 
 const dem = reactive<any[]>([
@@ -92,8 +93,8 @@ const dem = reactive<any[]>([
     com: markRaw(KImage)
   },
   {
-    name:"图片上传",
-    com:markRaw(KUpload),
+    name: "图片上传",
+    com: markRaw(KUpload),
   },
   {
     id: 11,
@@ -106,18 +107,18 @@ const dem = reactive<any[]>([
     com: markRaw(Pagination)
   },
   {
-    id:13,
+    id: 13,
     name: '标签页',
     com: markRaw(Tab)
   },
   {
-    id:14,
+    id: 14,
     name: '数值显示',
     com: markRaw(Statistic)
   },
   {
-    id:15,
-    name:"标签",
+    id: 15,
+    name: "标签",
     com: markRaw(tag)
   }
 ])
@@ -128,5 +129,4 @@ function change(com: any) {
     component.value = com.value
   }
 }
-
 </script>

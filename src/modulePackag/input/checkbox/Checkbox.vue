@@ -24,6 +24,7 @@ const value = inject<Ref<ModelValue>>("value")
 
 const checked = computed<boolean>({
   get() {
+    console.log(value?.value)
     return value!.value!.includes(props.value)
   },
   set() {

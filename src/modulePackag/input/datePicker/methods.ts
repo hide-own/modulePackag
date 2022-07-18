@@ -1,3 +1,5 @@
+import {GetPrevMonthDaysType} from './index'
+
 export const getYearMonthDay = (value: Date) => {
   const date = value ? new Date(value) : new Date();
   const day = date.getDate();
@@ -5,21 +7,22 @@ export const getYearMonthDay = (value: Date) => {
   const year = date.getFullYear();
   return [year, month, day];
 };
-export const getCurrentMonthLastDay = (year, month) => {
+export const getCurrentMonthLastDay = (year: number, month: number) => {
   return new Date(year, month, 0).getDate();
 };
 
-export const getPrevMonthLastDay = (year, month) => {
+export const getPrevMonthLastDay = (year: number, month: number) => {
   return new Date(year, month, 0).getDate();
 };
 
-export const cloneDate = (date) => {
+
+export const cloneDate = (date: Date) => {
   return new Date(date.getTime());
 };
 
-export const toMatrix = (list: getPrevMonthDaysType[], elementPerSubArray) => {
+export const toMatrix = (list: GetPrevMonthDaysType[], elementPerSubArray: number) => {
   // 通过一个索引
-  let matrix: (getPrevMonthDaysType[])[] = [];
+  let matrix: (GetPrevMonthDaysType[])[] = [];
   let k = -1;
   list.forEach((item, i) => {
     if (i % elementPerSubArray === 0) {

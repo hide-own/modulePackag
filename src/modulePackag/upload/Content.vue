@@ -4,7 +4,7 @@
       <KInput @change="search" class="mb-3" placeholder="请输入分类名"/>
       <div class="overflow-auto h-[50vh] scrollbar">
         <!--    全部图片    -->
-        <Tree :data='{"id": 0, "pid": 0, "name": "全部图片", "enname": "", "title": "全部图片", "children": []}' menu>
+        <Tree :data='menuFirst' menu>
           <template #title>
             <span class="text-blue-400">全部图片</span>
           </template>
@@ -78,11 +78,13 @@ const category = reactive<CategoryType[]>(
     {"id": 70, "pid": 0, "name": "花茶", "enname": "", "title": "花茶", "children": []}
   ])
 
+const menuFirst = ref<any>({"id": 0, "pid": 0, "name": "全部图片", "enname": "", "title": "全部图片", "children": []})
+
 //搜索的得出的结果
 const searchValue = ref<CategoryType[]>()
 
 //提取公共的搜索方法
-function toFindThe(match: CategoryType[], value: string | number) {
+function toFindThe(match: CategoryType[], value: string | number):any {
   for (const item of match) {
     if (item.name === value) return item
     if (item.children.length > 0) {
@@ -95,7 +97,7 @@ function toFindThe(match: CategoryType[], value: string | number) {
 }
 
 //input的change事件
-function search(value) {
+function search(value:string | number) {
   if (value === '') {
     return searchValue.value = undefined
   }

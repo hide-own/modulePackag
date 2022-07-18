@@ -1,29 +1,29 @@
 <template>
   多选：{{valueSelect}}
   <KSelect v-model:value="valueSelect" placeholder="占位符" multiple>
-    <KOption v-for="val in type_header" :key="val.type" :value="val.value" :label="val.name">
-<!--      <template #title="{selected}">-->
-<!--        {{ val.name }}++{{ selected }}-->
+    <KOption v-for="val in type_header" :key="val.type" :value="val.value">
+      <template #title="{selected}">
+        {{ val.name }}++{{ selected }}
+      </template>
+<!--      <template #icon="{selected}">-->
+<!--              121212{{selected}}-->
 <!--      </template>-->
-      <!--<template #icon="{selected}">
-              121212{{selected}}
-            </template>-->
     </KOption>
   </KSelect>
 
   <hr class="my-3">
 
-  单选：
-  <KSelect v-model:value="valueSelect" placeholder="占位符">
-    <KOption v-for="val in type_header" :key="val.type" :value="val.value" :label="val.name">
-<!--      <template #title="{selected}">-->
-<!--        {{ val.name }}++{{ selected }}-->
-<!--      </template>-->
-      <!--<template #icon="{selected}">
-              121212{{selected}}
-            </template>-->
-    </KOption>
-  </KSelect>
+<!--  单选：{{valueSelect}}-->
+<!--  <KSelect v-model:value="valueSelect" placeholder="占位符">-->
+<!--    <KOption v-for="val in type_header" :key="val.type" :value="val.value" :label="val.name">-->
+<!--&lt;!&ndash;      <template #title="{selected}">&ndash;&gt;-->
+<!--&lt;!&ndash;        {{ val.name }}++{{ selected }}&ndash;&gt;-->
+<!--&lt;!&ndash;      </template>&ndash;&gt;-->
+<!--      &lt;!&ndash;<template #icon="{selected}">-->
+<!--              121212{{selected}}-->
+<!--            </template>&ndash;&gt;-->
+<!--    </KOption>-->
+<!--  </KSelect>-->
 
 
   <pre class="my-10">
@@ -46,6 +46,10 @@ import {KOption, KSelect} from '@/modulePackag'
 
 
 const valueSelect = ref(1)
+
+setTimeout(()=>{
+  valueSelect.value = 2
+},1000)
 const type_header = reactive<any[]>([
   {"value": 1, "name": "出售中的商品", "count": 236},
   {"value": 2, "name": "仓库中的商品", "count": 37},

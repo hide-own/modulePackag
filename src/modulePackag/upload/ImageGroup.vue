@@ -1,13 +1,13 @@
 <template>
   <!--   操作按钮   -->
   <div class="flex flex-wrap">
-    <KButton :type="chooseValue.length>0?'info':''"
+    <KButton :type="chooseValue.length>0?'info':'normal'"
              :disabled="chooseValue.length===0"
              @click="use">使用选择图片
     </KButton>
     <KButton class="mx-3" type="info" @click="upload">上传图片</KButton>
     <KButton class="mx-3"
-             :type="chooseValue.length>0?'warning':''"
+             :type="chooseValue.length>0?'warning':'normal'"
              @click="del"
              :disabled="chooseValue.length!==0">删除图片
     </KButton>

@@ -6,8 +6,7 @@
       :value="modelValue"
       :name="name"
       :placeholder="placeholder"
-      @change="$emit('change',$event.target.value)"
-      @input="$emit('update:modelValue', $event.target.value)"
+      @input="oninput"
       ref="input">
   </div>
 </template>
@@ -18,5 +17,9 @@ defineProps<{
   name?: string,
   placeholder: string,
 }>();
-defineEmits(['update:modelValue', 'change']);
+const emit = defineEmits(['update:modelValue', 'change']);
+function oninput(e:Event){
+  const target = e.target as any
+  emit('update:modelValue',target.value)
+}
 </script>
