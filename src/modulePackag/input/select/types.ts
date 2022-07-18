@@ -12,6 +12,7 @@ export type Value = string | number | undefined | null | object
  * 渲染值
  */
 export type SelectedLabel = {
+  id: number
   value: Value
   label: Value
 }

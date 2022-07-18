@@ -1,7 +1,7 @@
 <template>
   多选：{{ valueSelect }}
   <KSelect v-model:value="valueSelect" placeholder="占位符" multiple>
-    <KOption v-for="val in type_header" :key="val.type" :value="val.value">
+    <KOption v-for="val in type_header" :key="val.value" :value="val.value">
       <template #title="{ selected }"> {{ val.name }}++{{ selected }} </template>
       <!--      <template #icon="{selected}">-->
       <!--              121212{{selected}}-->
@@ -46,7 +46,7 @@ const valueSelect = ref(1)
 setTimeout(() => {
   valueSelect.value = 2
 }, 1000)
-const type_header = reactive<unknown[]>([
+const type_header = reactive<{ value: number; name: string; count: number }[]>([
   { value: 1, name: '出售中的商品', count: 236 },
   { value: 2, name: '仓库中的商品', count: 37 },
   { value: 4, name: '已经售馨商品', count: 35 },

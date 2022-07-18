@@ -54,6 +54,6 @@ const selected = computed<boolean | undefined>(() => {
 })
 
 function choose() {
-  selectCtx!.value = [{ value: props.value, label: props.label }]
+  selectCtx!.value = [{ value: props.value, label: props.label, id: 0 }]
 }
 </script>

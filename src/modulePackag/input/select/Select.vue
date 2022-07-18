@@ -7,9 +7,7 @@
       <span class="block">
         <template v-if="selected.length">
           <template v-if="multiple">
-            <KTag v-for="val in label" :key="val.label" :value="val" @del="del">{{
-              val.label
-            }}</KTag>
+            <KTag v-for="val in label" :key="val.id" :value="val" @del="del">{{ val.label }}</KTag>
           </template>
           <span v-else class="text-sm mx-3">{{ selected[0].label }}</span>
         </template>
@@ -83,18 +81,18 @@ function resetSelected(selected: Selected, label: SelectedLabel[]): SelectedLabe
   } else if (props.multiple) {
     if (Array.isArray(selected)) {
       selected.map((item: Value) => {
-        label.push({ value: item, label: '' })
+        label.push({ value: item, label: '', id: 0 })
       })
     } else {
-      label.push({ value: selected, label: '' })
+      label.push({ value: selected, label: '', id: 0 })
     }
   } else if (Array.isArray(selected)) {
     console.warn('单选模式请勿使用数组')
     if (selected.length) {
-      label.splice(0, label.length, { value: selected[0], label: '' })
+      label.splice(0, label.length, { value: selected[0], label: '', id: 0 })
     }
   } else {
-    label.splice(0, label.length, { value: selected, label: '' })
+    label.splice(0, label.length, { value: selected, label: '', id: 0 })
   }
   return label
 }
