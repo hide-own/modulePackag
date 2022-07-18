@@ -35,7 +35,7 @@
     </div>
 
     <div class="w-full md:w-3/4 px-3">
-      <ImageGroup :sort-id="sortId" @useImg="$emit('useImg', $event)" />
+      <ImageGroup :sort-id="sortId" @use-img="$emit('useImg', $event)" />
     </div>
   </div>
 </template>

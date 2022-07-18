@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
+defineProps<{
   placeholder?: string | undefined
   value?: string | undefined
 }>()

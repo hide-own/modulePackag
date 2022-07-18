@@ -1,7 +1,7 @@
 <template>
   <div class="flex">
-    <div class="w-36 h-[100vh] overflow-auto bg-gray-900 inline-block ">
-      <Tree v-for="val in dem" :key="val.name" :data="val" valueKey="com" @change="change">
+    <div class="w-36 h-[100vh] overflow-auto bg-gray-900 inline-block">
+      <Tree v-for="val in dem" :key="val.name" :data="val" value-key="com" @change="change">
         <template #title>
           <span>{{ val.name }}</span>
         </template>
@@ -14,8 +14,8 @@
 </template>
 
 <script lang="ts" setup>
-import {inject, InjectionKey, markRaw, provide, reactive, ref} from "vue";
-import {Tree} from '@/modulePackag'
+import { Component, markRaw, reactive, Ref, ref } from 'vue'
+import { Tree } from '@/modulePackag'
 import Button from '@/components/Button.vue'
 import Select from '@/components/Select.vue'
 import Input from '@/components/Input.vue'
@@ -32,10 +32,14 @@ import Tab from '@/components/Tab.vue'
 import Statistic from '@/components/Statistic.vue'
 import KUpload from '@/components/Upload.vue'
 import tag from '@/components/tag.vue'
-import internal from "stream";
+type Dem = {
+  id: number
+  name: string
+  com?: Component
+  children?: Dem[]
+}
 
-
-const dem = reactive<any[]>([
+const dem = reactive<Dem[]>([
   {
     id: 1,
     name: '按钮',
@@ -57,12 +61,12 @@ const dem = reactive<any[]>([
       },
       {
         id: 4,
-        name: "日历",
+        name: '日历',
         com: markRaw(DatePicker)
       },
       {
         id: 5,
-        name: "多选框",
+        name: '多选框',
         com: markRaw(checked)
       },
       {
@@ -72,33 +76,34 @@ const dem = reactive<any[]>([
       },
       {
         id: 7,
-        name: "开关",
+        name: '开关',
         com: markRaw(Switch)
-      },
+      }
     ]
   },
   {
     id: 8,
-    name: "下拉盒",
+    name: '下拉盒',
     com: markRaw(Collapse)
   },
   {
     id: 9,
-    name: "弹窗",
+    name: '弹窗',
     com: markRaw(Modal)
   },
   {
     id: 10,
-    name: "图片",
+    name: '图片',
     com: markRaw(KImage)
   },
   {
-    name: "图片上传",
-    com: markRaw(KUpload),
+    id: 22,
+    name: '图片上传',
+    com: markRaw(KUpload)
   },
   {
     id: 11,
-    name: "树",
+    name: '树',
     com: markRaw(Trees)
   },
   {
@@ -118,13 +123,13 @@ const dem = reactive<any[]>([
   },
   {
     id: 15,
-    name: "标签",
+    name: '标签',
     com: markRaw(tag)
   }
 ])
-let component = ref<any>(dem[0].com)
+const component = ref<Component>(dem[0].com!)
 
-function change(com: any) {
+function change(com: Ref) {
   if (com.value) {
     component.value = com.value
   }

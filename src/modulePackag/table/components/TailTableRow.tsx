@@ -83,6 +83,8 @@ const TailTableRow = defineComponent({
           if (ext == null) {
             return null
           }
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           const expanded = isExpanded(ext, row)
           if (expanded || expandedAlways) {
             // ...

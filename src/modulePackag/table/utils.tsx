@@ -277,6 +277,7 @@ export function createActionable(config: true | UserTableActionable): TableActio
   return createTableExtension(createUserActionable(config))
 }
 
+// eslint-disable-next-line vue/one-component-per-file
 export const ExpansionButton = defineComponent({
   name: 'ExpansionButton',
   inheritAttrs: false,
@@ -322,6 +323,7 @@ export const ExpansionButton = defineComponent({
   }
 })
 
+// eslint-disable-next-line vue/one-component-per-file
 export const SelectionBox = defineComponent({
   name: 'TailTableSelectionBox',
   props: {

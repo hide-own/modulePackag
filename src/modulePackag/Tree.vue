@@ -57,12 +57,6 @@ import { ChevronRightIcon, DotsHorizontalIcon } from '@heroicons/vue/solid'
 import { Tree } from '@/modulePackag'
 import { computed, ref } from 'vue'
 
-type Data = {
-  id?: number | string
-  children?: Data
-  [key: string]: unknown
-}
-
 const emit = defineEmits(['change'])
 const props = withDefaults(
   defineProps<{

@@ -24,8 +24,4 @@
   <!--  </TailTable>-->
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const tableData = ref<[]>([])
-</script>
+<script lang="ts" setup></script>

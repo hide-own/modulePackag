@@ -27,7 +27,7 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
-import { ZoomInIcon, ZoomOutIcon, ArrowsExpandIcon, XCircleIcon } from '@heroicons/vue/solid'
+import { ZoomInIcon, ZoomOutIcon, ArrowsExpandIcon } from '@heroicons/vue/solid'
 
 const props = defineProps<{
   width: number | string

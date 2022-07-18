@@ -1,7 +1,6 @@
 import {
   computed,
   defineComponent,
-  inject,
   PropType,
   provide,
   ref,
@@ -124,13 +123,20 @@ export default defineComponent({
     loader: Function as PropType<TableLoader>
   },
   emits: {
+    //  eslint-disable-next-line @typescript-eslint/no-unused-vars
     'expanded-keys': (values: Value[][]) => true,
+    //  eslint-disable-next-line @typescript-eslint/no-unused-vars
     'selected-keys': (values: Value[][]) => true,
+    //  eslint-disable-next-line @typescript-eslint/no-unused-vars
     'title-click': (column: TableColumn | TableExtension, columnIndex: number) => true,
     'cell-click': (
+      //  eslint-disable-next-line @typescript-eslint/no-unused-vars
       row: TableRow,
+      //  eslint-disable-next-line @typescript-eslint/no-unused-vars
       rowIndex: number,
+      //  eslint-disable-next-line @typescript-eslint/no-unused-vars
       column: TableColumn | TableExtension,
+      //  eslint-disable-next-line @typescript-eslint/no-unused-vars
       columnIndex: number
     ) => true,
     'page-change': (page: number) => true,

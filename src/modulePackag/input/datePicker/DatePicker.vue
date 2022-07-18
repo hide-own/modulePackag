@@ -58,13 +58,7 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  cloneDate,
-  getCurrentMonthLastDay,
-  getPrevMonthLastDay,
-  getYearMonthDay,
-  toMatrix
-} from './methods'
+import { getCurrentMonthLastDay, getPrevMonthLastDay, getYearMonthDay, toMatrix } from './methods'
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { Value, GetPrevMonthDaysType, GetDays } from './index'
 

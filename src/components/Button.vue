@@ -1,5 +1,5 @@
 <template>
-  <KButton  disabled>按钮</KButton>
+  <KButton disabled>按钮</KButton>
   <KButton type="success">按钮</KButton>
   <KButton type="warning">按钮</KButton>
   <KButton type="info">按钮</KButton>

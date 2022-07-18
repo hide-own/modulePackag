@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import { computed, provide } from 'vue'
 import { CheckValue, ModelValue } from './index'
-import { init, choose, Option } from '@/modulePackag/hookes/init'
+import { init, choose } from '@/modulePackag/hookes/init'
 
 const props = withDefaults(
   defineProps<{

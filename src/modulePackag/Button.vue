@@ -1,23 +1,41 @@
 <template>
-  <button type="button"
-          :class="['py-2','px-4','border','border-transparent',
-          'shadow-sm','text-sm','font-medium','rounded-md','text-white','focus:outline-none',
-          'focus:ring-2','focus:ring-offset-2',`${type}`,{'disabled':disabled}]"
-          :disabled="disabled">
-    <slot/>
+  <button
+    type="button"
+    :class="[
+      'py-2',
+      'px-4',
+      'border',
+      'border-transparent',
+      'shadow-sm',
+      'text-sm',
+      'font-medium',
+      'rounded-md',
+      'text-white',
+      'focus:outline-none',
+      'focus:ring-2',
+      'focus:ring-offset-2',
+      `${type}`,
+      { disabled: disabled }
+    ]"
+    :disabled="disabled"
+  >
+    <slot />
   </button>
 </template>
 
 <script lang="ts" setup>
-import {computed, PropType, toRef} from "vue";
+import { computed } from 'vue'
 
-const props = withDefaults(defineProps < {
-  type? :"normal" | "success" | "warning" | "info"
-  disabled ? : boolean
-} > (), {
-  type: 'normal',
-  disabled: false
-});
+const props = withDefaults(
+  defineProps<{
+    type?: 'normal' | 'success' | 'warning' | 'info'
+    disabled?: boolean
+  }>(),
+  {
+    type: 'normal',
+    disabled: false
+  }
+)
 console.log(props.type)
 const type = computed<string>(() => {
   switch (props.type) {
@@ -31,8 +49,6 @@ const type = computed<string>(() => {
       return 'gray'
   }
 })
-
-
 </script>
 
 <style scoped lang="less">

@@ -39,9 +39,11 @@ type Truthy<T> = T extends Falsely ? never : T
 /**
  * 尝试将值当做函数来获取其参数列表
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 type ValueParams<T> = T extends Function ? Parameters<T> : never
 
 /**
  * 尝试将值当做函数来获取其返回值
  */
+// eslint-disable-next-line @typescript-eslint/ban-types
 type ValueReturn<T> = T extends Function ? ReturnType<T> : T

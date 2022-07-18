@@ -17,7 +17,7 @@
     </div>
   </div>
   <Modal v-model:visible="show" title="选择图片" footer width="1100">
-    <Content @useImg="use" />
+    <Content @use-img="use" />
   </Modal>
 </template>
 

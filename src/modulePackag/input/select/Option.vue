@@ -26,7 +26,7 @@
 <script lang="ts" setup>
 import { CheckIcon } from '@heroicons/vue/solid'
 import { Value, SelectedLabel } from './types'
-import { computed, inject, ref, Ref, watch } from 'vue'
+import { computed, inject, ref, Ref } from 'vue'
 
 const props = defineProps<{
   value: Value
@@ -34,7 +34,7 @@ const props = defineProps<{
 }>()
 
 const selectCtx = inject<Ref<SelectedLabel[]>>('selected')
-const selectCtxFind = selectCtx?.value.find((d) => d.value === props.value)
+// const selectCtxFind = selectCtx?.value.find((d) => d.value === props.value)
 const itemRef = ref<HTMLElement | null>(null)
 
 const label = computed(() => {
