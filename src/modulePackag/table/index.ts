@@ -1,7 +1,7 @@
-import TailTable from "./components/TailTable";
+import TailTable from './components/TailTable'
 
-export * from "./context";
-export * from "./types";
+export * from './context'
+export * from './types'
 export {
   TailTableError,
   isTableColumn,
@@ -9,6 +9,6 @@ export {
   createUserActionable,
   createUserDraggable,
   createUserExpandable,
-  createUserSelectable,
-} from "./utils";
-export default TailTable;
+  createUserSelectable
+} from './utils'
+export default TailTable

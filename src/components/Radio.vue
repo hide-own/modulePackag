@@ -1,12 +1,9 @@
 <template>
-    <RadioGroup v-model:value="RadioGroupValue">
-      <Radio v-for="val in plans" :key="val.name" :value="val.name">
-        <template #checkbox="{selected}">
-          {{val.name}}--{{selected}}
-        </template>
-      </Radio>
-    </RadioGroup>
-
+  <RadioGroup v-model:value="RadioGroupValue">
+    <Radio v-for="val in plans" :key="val.name" :value="val.name">
+      <template #checkbox="{ selected }"> {{ val.name }}--{{ selected }} </template>
+    </Radio>
+  </RadioGroup>
 
   <pre>
     RadioGroup          单选框组
@@ -22,8 +19,8 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from "vue";
-import {RadioGroup,Radio} from '@/modulePackag'
+import { ref } from 'vue'
+import { RadioGroup, Radio } from '@/modulePackag'
 
 const RadioGroupValue = ref<string>('Business')
 const plans = [
@@ -31,19 +28,19 @@ const plans = [
     name: 'Startup',
     ram: '12GB',
     cpus: '6 CPUs',
-    disk: '160 GB SSD disk',
+    disk: '160 GB SSD disk'
   },
   {
     name: 'Business',
     ram: '16GB',
     cpus: '8 CPUs',
-    disk: '512 GB SSD disk',
+    disk: '512 GB SSD disk'
   },
   {
     name: 'Enterprise',
     ram: '32GB',
     cpus: '12 CPUs',
-    disk: '1024 GB SSD disk',
-  },
+    disk: '1024 GB SSD disk'
+  }
 ]
 </script>

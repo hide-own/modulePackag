@@ -1,5 +1,5 @@
 <template>
-  <Collapse header="我的标头" v-for="val in 3">
+  <Collapse v-for="val in 3" :key="val" header="我的标头">
     <div>11211</div>
     <div>11211</div>
   </Collapse>
@@ -14,5 +14,5 @@
 </template>
 
 <script lang="ts" setup>
-import {Collapse} from '@/modulePackag'
+import { Collapse } from '@/modulePackag'
 </script>

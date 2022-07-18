@@ -1,16 +1,13 @@
 <template>
-    <CheckboxGroup v-model:value="checked" :multiple="false">
-      <Checkbox :value="val" v-for="val in 3">
-          <template #checkbox="{selected}">
-            {{val}}{{selected}}
-          </template>
-      </Checkbox>
-    </CheckboxGroup>
-
-  <CheckboxGroup v-model:value="checked2" multiple>
-    <Checkbox :value="val" v-for="val in 3">{{ val }}</Checkbox>
+  <CheckboxGroup v-model:value="checked" :multiple="false">
+    <Checkbox v-for="val in 3" :key="val" :value="val">
+      <template #checkbox="{ selected }"> {{ val }}{{ selected }} </template>
+    </Checkbox>
   </CheckboxGroup>
 
+  <CheckboxGroup v-model:value="checked2" multiple>
+    <Checkbox v-for="val in 3" :key="val" :value="val">{{ val }}</Checkbox>
+  </CheckboxGroup>
 
   <pre>
     CheckboxGroup          复选框标签
@@ -25,10 +22,9 @@
 </template>
 
 <script lang="ts" setup>
-import {CheckboxGroup,Checkbox} from '@/modulePackag'
-import {ref} from "vue";
+import { CheckboxGroup, Checkbox } from '@/modulePackag'
+import { ref } from 'vue'
 
 const checked = ref<number>(1)
 const checked2 = ref<number[]>([2])
-
 </script>

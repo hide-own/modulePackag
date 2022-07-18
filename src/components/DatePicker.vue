@@ -1,5 +1,5 @@
 <template>
-  <DatePicker v-model:value="day"/>
+  <DatePicker v-model:value="day" />
 
   <pre>
     DatePicker         标签
@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts" setup>
-import {DatePicker} from '@/modulePackag'
-import {ref} from "vue";
+import { DatePicker } from '@/modulePackag'
+import { ref } from 'vue'
 
 const day = ref<string>('2022-6-28')
 </script>

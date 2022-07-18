@@ -1,10 +1,13 @@
+type Fun<T> = (event: T) => void
+
 type BusClass = {
-  emit: (name: string) => void, on: (name: string, callback: Function) => void
+  emit: (name: string) => void
+  on: (name: string, callback: Fun<unknown>) => void
 }
 
 type PramsKey = string | number | symbol
 type List = {
-  [key: PramsKey]: Array<Function>
+  [key: PramsKey]: Array<Fun<PramsKey>>
 }
 
 class Bus implements BusClass {
@@ -14,18 +17,20 @@ class Bus implements BusClass {
     this.list = {}
   }
 
-  emit(name: string, ...args: Array<any>) {
-    let eventName: Array<Function> = this.list[name]
-    eventName.forEach(fn => {
+  emit(name: string, ...args: unknown[]) {
+    const eventName: Array<Fun<PramsKey>> = this.list[name]
+    eventName.forEach((fn) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       fn.apply(this, args)
     })
   }
 
-  on(name: string, callback: Function) {
-    let fn: Array<Function> = this.list[name] || []
+  on(name: string, callback: Fun<unknown>) {
+    const fn: Array<Fun<PramsKey>> = this.list[name] || []
     fn.push(callback)
     this.list[name] = fn
   }
 }
 
-export default new Bus();
+export default new Bus()

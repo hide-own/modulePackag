@@ -1,4 +1,4 @@
-import {Value} from "@/modulePackag/input/select/types";
+import { Value } from '@/modulePackag/input/select/types'
 
 export type ModelValue = (string | number | null | undefined | object)[] | null | undefined
 
@@ -21,13 +21,12 @@ export function init(initialValue: ModelValue | Option, multiple: boolean): Mode
   return newSelected
 }
 
-
-export function choose(option: Option, optionGroup: ModelValue,multiple:boolean): Option | [] {
+export function choose(option: Option, optionGroup: ModelValue, multiple: boolean): Option | [] {
   if (!multiple) {
-    optionGroup!.splice(0,optionGroup!.length,option)
+    optionGroup!.splice(0, optionGroup!.length, option)
     return option
   } else {
-    const index = optionGroup!.findIndex(value => option === value)
+    const index = optionGroup!.findIndex((value) => option === value)
     console.log(index)
     if (index === -1) {
       optionGroup!.push(option)

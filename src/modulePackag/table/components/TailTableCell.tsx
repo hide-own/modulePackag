@@ -1,33 +1,33 @@
-import {computed, defineComponent, h, PropType, VNodeChild, withModifiers} from "vue";
-import {TableExtension, TableRow} from "../types";
-import {mustTableContext, mustTableFeatures} from "../symbols";
+import { computed, defineComponent, h, PropType, VNodeChild, withModifiers } from 'vue'
+import { TableExtension, TableRow } from '../types'
+import { mustTableContext, mustTableFeatures } from '../symbols'
 
 export default defineComponent({
-  name: "TailTableCell",
+  name: 'TailTableCell',
   props: {
     row: {
       type: Object as PropType<TableRow>,
-      required: true,
+      required: true
     },
     rowIndex: {
       type: Number,
-      required: true,
+      required: true
     },
     columnIndex: {
       type: Number,
-      required: true,
+      required: true
     },
     render: {
       type: Function as PropType<RenderFunction>,
-      required: true,
+      required: true
     },
     hidden: {
       type: Boolean,
-      required: true,
-    },
+      required: true
+    }
   },
-  emits: ["click"],
-  setup(props, {emit}): RenderFunction {
+  emits: ['click'],
+  setup(props, { emit }): RenderFunction {
     const features = mustTableFeatures()
     const context = mustTableContext()
     const indent = computed(() => {
@@ -39,24 +39,36 @@ export default defineComponent({
       }
       return deep
     })
-    const onClick = withModifiers(() => emit("click"), ["stop"])
+    const onClick = withModifiers(() => emit('click'), ['stop'])
     return (): VNodeChild => {
       const expandable: TableExtension | undefined = context.findExtension('expandable')
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       if (!expandable || props.columnIndex !== (expandable.config.handlePosition ?? 0)) {
         return (
-          <td class={["p-2", {hidden: props.hidden, border: features.value.lattice}]} onClick={onClick}>
+          <td
+            class={['p-2', { hidden: props.hidden, border: features.value.lattice }]}
+            onClick={onClick}
+          >
             {props.render()}
           </td>
-        );
+        )
       }
       return (
-        <td class={["p-2 flex items-center", {hidden: props.hidden, border: features.value.lattice}]} onClick={onClick}>
-          {indent.value > 0 ? <div style={{width: `${indent.value * 2}rem`}}></div> : null}
-          <div
-            class="w-4 mr-2">{props.row.children?.length ? expandable.cell?.(props.row, expandable) : null}</div>
+        <td
+          class={[
+            'p-2 flex items-center',
+            { hidden: props.hidden, border: features.value.lattice }
+          ]}
+          onClick={onClick}
+        >
+          {indent.value > 0 ? <div style={{ width: `${indent.value * 2}rem` }}></div> : null}
+          <div class="w-4 mr-2">
+            {props.row.children?.length ? expandable.cell?.(props.row, expandable) : null}
+          </div>
           <div class="grow">{props.render()}</div>
         </td>
-      );
-    };
-  },
-});
+      )
+    }
+  }
+})

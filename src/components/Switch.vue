@@ -1,5 +1,5 @@
 <template>
-  <Switch v-model:value="switchValue" checked="开" unchecked="关"/>
+  <Switch v-model:value="switchValue" checked="开" unchecked="关" />
 
   <pre>
     Switch                  标签
@@ -12,8 +12,8 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from "vue";
-import {Switch} from '@/modulePackag'
+import { ref } from 'vue'
+import { Switch } from '@/modulePackag'
 
 const switchValue = ref<boolean>(false)
 </script>

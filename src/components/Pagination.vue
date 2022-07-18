@@ -1,8 +1,5 @@
 <template>
-  <KPagination :total="600"
-               v-model:current="params.page"
-               :page-size="params.limit"/>
-
+  <KPagination v-model:current="params.page" :total="600" :page-size="params.limit" />
 
   <pre>
     KPagination             标签
@@ -13,17 +10,17 @@
 </template>
 
 <script lang="ts" setup>
-import {KPagination} from '@/modulePackag'
+import { KPagination } from '@/modulePackag'
 
-import {reactive} from "vue";
+import { reactive } from 'vue'
 
-let params = reactive<{
-  page: number,
-  limit: number,
-  rule_name: string,
+const params = reactive<{
+  page: number
+  limit: number
+  rule_name: string
 }>({
   page: 2,
   limit: 10,
-  rule_name: '',
+  rule_name: ''
 })
 </script>

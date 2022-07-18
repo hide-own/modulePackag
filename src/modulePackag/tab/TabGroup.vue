@@ -1,14 +1,14 @@
 <template>
   <div class="px-2 py-4 sm:px-0">
     <div class="inline-block space-x-1 rounded-xl bg-white-900/20 p-1 shadow">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import {computed, provide} from "vue";
-import {Value} from './index'
+import { computed, provide } from 'vue'
+import { Value } from './index'
 
 const emit = defineEmits(['update:value'])
 const props = defineProps<{

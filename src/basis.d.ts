@@ -46,17 +46,3 @@ type Awaitable<T> = T | Promise<T>
 
 /** 可能是数组。*/
 type Arrayable<T> = T | Array<T>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

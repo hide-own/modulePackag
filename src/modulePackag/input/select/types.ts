@@ -12,6 +12,6 @@ export type Value = string | number | undefined | null | object
  * 渲染值
  */
 export type SelectedLabel = {
-  value: Value,
+  value: Value
   label: Value
 }

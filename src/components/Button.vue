@@ -13,6 +13,5 @@
 </template>
 
 <script lang="ts" setup>
-import {KButton} from "@/modulePackag";
+import { KButton } from '@/modulePackag'
 </script>
-

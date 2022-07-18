@@ -1,22 +1,26 @@
 <template>
   <div class="mr-3">
-    <input type="radio" :checked="checked" v-model="checked"
-           class="inline-block focus:ring-sky-700 h-4 w-4 text-sky-700 border-sky-700"/>
+    <input
+      v-model="checked"
+      type="radio"
+      :checked="checked"
+      class="inline-block focus:ring-sky-700 h-4 w-4 text-sky-700 border-sky-700"
+    />
     <slot name="checkbox" :selected="checked">
-      <slot/>
+      <slot />
     </slot>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {computed, inject, Ref} from "vue";
-import {Value} from './index'
+import { computed, inject, Ref } from 'vue'
+import { Value } from './index'
 
-let props = defineProps<{
+const props = defineProps<{
   value: Value
 }>()
 
-let selected = inject<Ref<Value>>('selected')
+const selected = inject<Ref<Value>>('selected')
 
 const checked = computed<boolean>({
   get() {

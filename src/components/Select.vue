@@ -1,30 +1,27 @@
 <template>
-  多选：{{valueSelect}}
+  多选：{{ valueSelect }}
   <KSelect v-model:value="valueSelect" placeholder="占位符" multiple>
     <KOption v-for="val in type_header" :key="val.type" :value="val.value">
-      <template #title="{selected}">
-        {{ val.name }}++{{ selected }}
-      </template>
-<!--      <template #icon="{selected}">-->
-<!--              121212{{selected}}-->
-<!--      </template>-->
+      <template #title="{ selected }"> {{ val.name }}++{{ selected }} </template>
+      <!--      <template #icon="{selected}">-->
+      <!--              121212{{selected}}-->
+      <!--      </template>-->
     </KOption>
   </KSelect>
 
-  <hr class="my-3">
+  <hr class="my-3" />
 
-<!--  单选：{{valueSelect}}-->
-<!--  <KSelect v-model:value="valueSelect" placeholder="占位符">-->
-<!--    <KOption v-for="val in type_header" :key="val.type" :value="val.value" :label="val.name">-->
-<!--&lt;!&ndash;      <template #title="{selected}">&ndash;&gt;-->
-<!--&lt;!&ndash;        {{ val.name }}++{{ selected }}&ndash;&gt;-->
-<!--&lt;!&ndash;      </template>&ndash;&gt;-->
-<!--      &lt;!&ndash;<template #icon="{selected}">-->
-<!--              121212{{selected}}-->
-<!--            </template>&ndash;&gt;-->
-<!--    </KOption>-->
-<!--  </KSelect>-->
-
+  <!--  单选：{{valueSelect}}-->
+  <!--  <KSelect v-model:value="valueSelect" placeholder="占位符">-->
+  <!--    <KOption v-for="val in type_header" :key="val.type" :value="val.value" :label="val.name">-->
+  <!--&lt;!&ndash;      <template #title="{selected}">&ndash;&gt;-->
+  <!--&lt;!&ndash;        {{ val.name }}++{{ selected }}&ndash;&gt;-->
+  <!--&lt;!&ndash;      </template>&ndash;&gt;-->
+  <!--      &lt;!&ndash;<template #icon="{selected}">-->
+  <!--              121212{{selected}}-->
+  <!--            </template>&ndash;&gt;-->
+  <!--    </KOption>-->
+  <!--  </KSelect>-->
 
   <pre class="my-10">
     KSelect          标签
@@ -41,20 +38,19 @@
 </template>
 
 <script lang="ts" setup>
-import {reactive, ref} from "vue";
-import {KOption, KSelect} from '@/modulePackag'
-
+import { reactive, ref } from 'vue'
+import { KOption, KSelect } from '@/modulePackag'
 
 const valueSelect = ref(1)
 
-setTimeout(()=>{
+setTimeout(() => {
   valueSelect.value = 2
-},1000)
-const type_header = reactive<any[]>([
-  {"value": 1, "name": "出售中的商品", "count": 236},
-  {"value": 2, "name": "仓库中的商品", "count": 37},
-  {"value": 4, "name": "已经售馨商品", "count": 35},
-  {"value": 5, "name": "警戒库存商品", "count": 0},
-  {"value": 6, "name": "回收站的商品", "count": 1}
+}, 1000)
+const type_header = reactive<unknown[]>([
+  { value: 1, name: '出售中的商品', count: 236 },
+  { value: 2, name: '仓库中的商品', count: 37 },
+  { value: 4, name: '已经售馨商品', count: 35 },
+  { value: 5, name: '警戒库存商品', count: 0 },
+  { value: 6, name: '回收站的商品', count: 1 }
 ])
 </script>

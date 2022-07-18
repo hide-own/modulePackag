@@ -1,4 +1,4 @@
-import {Ref, ref, watch} from "vue";
+import { Ref, ref, watch } from 'vue'
 
 /**
  * 用户分页返回
@@ -30,7 +30,7 @@ export default function (options: {
   const perPage = ref<number>(options.perPage ?? 10)
   const total = ref<number>(options.total ?? 0)
   const loading = ref(false)
-  let version:number = 0
+  let version = 0
   let token: UserPaginationCancelToken | undefined
 
   function reset(): void {
@@ -40,11 +40,11 @@ export default function (options: {
 
   async function load() {
     if (loading.value) return
-    if (options.load == null) return;
+    if (options.load == null) return
     loading.value = true
     try {
       version++
-      token = {cancel: reset, version}
+      token = { cancel: reset, version }
       await options.load!(page.value, perPage.value, token)
       options.onSuccess?.()
     } catch (e) {
@@ -63,11 +63,10 @@ export default function (options: {
     load()
   })
 
-
   return {
     page,
     perPage,
     total,
-    loading,
+    loading
   }
 }

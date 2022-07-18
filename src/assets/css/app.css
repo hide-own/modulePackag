@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 pre {
-  @apply py-8
+  @apply py-8;
 }
 
 .text-decoration {
-  text-decoration: line-through
+  text-decoration: line-through;
 }
 
 .scrollbar::-webkit-scrollbar {
-  display: none
+  display: none;
 }

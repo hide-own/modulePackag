@@ -14,8 +14,8 @@
 </template>
 
 <script lang="ts" setup>
-import {TabGroup, Tab} from "@/modulePackag";
-import {ref} from "vue";
+import { TabGroup, Tab } from '@/modulePackag'
+import { ref } from 'vue'
 
 const tabValue = ref<number>(2)
 </script>

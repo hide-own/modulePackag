@@ -1,7 +1,7 @@
 <template>
-  <KTag :value="tag"/>
+  <KTag :value="tag" />
 
-  <KTag v-for="val in arr" :value="val" @del="del"/>
+  <KTag v-for="val in arr" :key="val" :value="val" @del="del" />
 
   <pre>
     KTag         标签
@@ -13,16 +13,15 @@
 </template>
 
 <script lang="ts" setup>
-import {KTag} from '@/modulePackag'
-import {ref} from "vue";
+import { KTag } from '@/modulePackag'
+import { ref } from 'vue'
 
 const tag = ref<string>('西瓜')
 
-const arr = ref<any[]>([1, 2, 3, 4, 5, 6, 7, 8, 9])
+const arr = ref<number[]>([1, 2, 3, 4, 5, 6, 7, 8, 9])
 
 function del(val: number) {
   console.log(val)
   // arr.value.remover(val)
 }
-
 </script>

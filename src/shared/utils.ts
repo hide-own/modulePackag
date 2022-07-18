@@ -9,10 +9,9 @@
  * @return {any}
  */
 export function value<V>(v: V, ...args: ValueParams<V>): ValueReturn<V> {
-  return typeof v === "function" ? v(...args) : v;
+  return typeof v === 'function' ? v(...args) : v
 }
 
-
 export function keysOf<T>(obj: T): (keyof T)[] {
-  return Object.keys(obj) as (keyof T)[];
+  return Object.keys(obj) as (keyof T)[]
 }
